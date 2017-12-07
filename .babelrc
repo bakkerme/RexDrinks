@@ -1,0 +1,9 @@
+{
+  "presets": ["react-native", "flow"],
+  "plugins": [[
+    "module-alias", [
+    { "src": "./app", "expose": "app" },
+    { "src": "./app/components", "expose": "components" }
+    ]
+  ]]
+}
