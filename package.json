@@ -7,15 +7,20 @@
     "test": "jest"
   },
   "dependencies": {
+    "npm": "^4.6.1",
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-linear-gradient": "^2.3.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.3",
     "babel-jest": "21.2.0",
     "babel-plugin-module-alias": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react-native": "4.0.0",
+    "eslint": "^4.13.0",
+    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-react": "^7.5.1",
     "flow-bin": "^0.60.1",
     "jest": "21.2.1",
     "react-test-renderer": "16.0.0"

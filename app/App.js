@@ -1,23 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
+//@flow
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
-  Text,
-  View,
-  StatusBar
+  StatusBar,
+  View
 } from 'react-native';
-
 import LinearGradient from 'react-native-linear-gradient';
-
 import Cost from 'components/cost';
 
-export default class App extends Component<{}> {
+export default class App extends Component<*> {
   render() {
     return (
       <View style={{flex: 1, marginTop: 10}}>
@@ -43,7 +34,7 @@ var styles = StyleSheet.create({
   buttonText: {
     width: 500,
     fontSize: 90,
-    fontWeight: "400",
+    fontWeight: '400',
     textAlign: 'center',
     margin: 10,
     color: '#ffffff',
