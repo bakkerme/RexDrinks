@@ -7,8 +7,29 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Cost from 'components/cost';
+import CrementButton from 'components/crement-button';
 
-export default class App extends Component<*> {
+type State = {
+  cost: number
+}
+
+export default class App extends Component<*, State> {
+  constructor (props: Object) {
+    super(props);
+
+    this.state = {
+      cost: 2
+    };
+  }
+
+  decrementValue = () => {
+    this.setState({ cost: this.state.cost - 1 });
+  }
+
+  incrementValue = () => {
+    this.setState({ cost: this.state.cost + 1 });
+  }
+
   render() {
     return (
       <View style={{flex: 1, marginTop: 10}}>
@@ -18,7 +39,11 @@ export default class App extends Component<*> {
           backgroundColor={'#76b852'}
         />
         <LinearGradient colors={['#76b852','#8dc26f']} style={styles.linearGradient}>
-          <Cost value={1} />
+          <View style={styles.costContainer}>
+            <CrementButton type={CrementButton.TYPE.DECREMENT} onPress={this.decrementValue} />
+            <Cost value={this.state.cost} />
+            <CrementButton type={CrementButton.TYPE.INCREMENT} onPress={this.incrementValue} />
+          </View>
         </LinearGradient>
       </View>
     );
@@ -28,20 +53,12 @@ export default class App extends Component<*> {
 var styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingLeft: 25,
+    paddingRight: 25,
+    justifyContent: 'center'
   },
-  buttonText: {
-    width: 500,
-    fontSize: 90,
-    fontWeight: '400',
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-    opacity: 0.8,
-    textShadowOffset: {width: 0, height: 1},
-    textShadowColor: 'rgba(0,0,0,0.40)',
-    textShadowRadius: 60
-  },
+  costContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  }
 });

@@ -2,32 +2,97 @@
 import React from 'react';
 
 import {
+  Animated,
   StyleSheet,
   Text,
-  View,
 } from 'react-native';
 
 type Props = {
   value: number
 }
 
-export default class Cost extends React.Component<Props> {
+type State = {
+  scale: Animated.Value,
+  top: Animated.Value
+}
+
+export default class Cost extends React.Component<Props, State> {
+  constructor (props: Object) {
+    super(props);
+
+    this.state = {
+      scale: new Animated.Value(1),
+      top: new Animated.Value(0)
+    };
+  }
+
+  componentWillUpdate (nextProps: Object) {
+    if(nextProps.value !== this.props.value) {
+      Animated.sequence([
+        Animated.parallel([
+          Animated.timing(
+            this.state.scale,
+            {
+              toValue: 1.05,
+              duration: 100,
+              useNativeDriver: true
+            }
+          ),
+          Animated.timing(
+            this.state.top,
+            {
+              toValue: -5,
+              duration: 100,
+              useNativeDriver: true
+            }
+          )
+        ]),
+        Animated.parallel([
+          Animated.timing(
+            this.state.scale,
+            {
+              toValue: 1,
+              duration: 100,
+              useNativeDriver: true
+            }
+          ),
+          Animated.timing(
+            this.state.top,
+            {
+              toValue: 0,
+              duration: 100,
+              useNativeDriver: true
+            }
+          )
+        ])
+      ]).start();
+    }
+  }
+
   render() {
+    const { value, ...other } = this.props;
+
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text 
-          style={styles.buttonText}
-        >
+      <Animated.View
+        style={{
+          transform: [
+            { translateY: this.state.top },
+            { scaleX: this.state.scale },
+            { scaleY: this.state.scale }
+          ]
+        }}
+        {...other}
+      >
+        <Text style={styles.buttonText}>
           ${this.props.value}
         </Text>
-      </View>
+      </Animated.View>
     );
   }
 }
 
 var styles = StyleSheet.create({
   buttonText: {
-    width: 500,
     fontSize: 90,
     fontWeight: '400',
     textAlign: 'center',
