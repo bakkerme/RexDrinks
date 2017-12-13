@@ -3,7 +3,8 @@
   "plugins": [[
     "module-alias", [
     { "src": "./app/", "expose": "app" },
-    { "src": "./app/components/", "expose": "components" }
+    { "src": "./app/screens/", "expose": "screens" },
+    { "src": "./app/components/", "expose": "components" },
     ]
   ]]
 }

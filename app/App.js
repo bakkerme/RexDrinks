@@ -3,33 +3,27 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   StatusBar,
-  View
+  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Cost from 'components/cost';
-import CrementButton from 'components/crement-button';
+import {
+  Scene,
+  Router,
+  Stack,
+  // Actions,
+  // Reducer,
+  // ActionConst,
+  // Overlay,
+  // Tabs,
+  // Modal,
+  // Drawer,
+  // Lightbox,
+} from 'react-native-router-flux';
 
-type State = {
-  cost: number
-}
+// Fix the import alias at some point
+import ValueSelectScreen from 'screens/value-select';
 
-export default class App extends Component<*, State> {
-  constructor (props: Object) {
-    super(props);
-
-    this.state = {
-      cost: 2
-    };
-  }
-
-  decrementValue = () => {
-    this.setState({ cost: this.state.cost - 1 });
-  }
-
-  incrementValue = () => {
-    this.setState({ cost: this.state.cost + 1 });
-  }
-
+export default class App extends Component<*> {
   render() {
     return (
       <View style={{flex: 1, marginTop: 10}}>
@@ -39,11 +33,11 @@ export default class App extends Component<*, State> {
           backgroundColor={'#76b852'}
         />
         <LinearGradient colors={['#76b852','#8dc26f']} style={styles.linearGradient}>
-          <View style={styles.costContainer}>
-            <CrementButton type={CrementButton.TYPE.DECREMENT} onPress={this.decrementValue} />
-            <Cost value={this.state.cost} />
-            <CrementButton type={CrementButton.TYPE.INCREMENT} onPress={this.incrementValue} />
-          </View>
+          <Router>
+            <Stack key="root">
+              <Scene key="valueSelect" component={ValueSelectScreen} title="Value Select"/>
+            </Stack>
+          </Router>
         </LinearGradient>
       </View>
     );

@@ -52,7 +52,7 @@ var styles = StyleSheet.create({
     backgroundColor: 'transparent',
     opacity: 0.8,
     textShadowOffset: {width: 0, height: 1},
-    textShadowColor: 'rgba(0,0,0,0.40)',
-    textShadowRadius: 60
+    textShadowColor: 'rgba(0,0,0,0.20)',
+    textShadowRadius: 30
   },
 });
