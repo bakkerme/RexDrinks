@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text
 } from 'react-native';
+import Screen from 'components/screen';
 import Cost from 'components/cost';
 import CrementButton from 'components/crement-button';
 
@@ -31,7 +32,7 @@ export default class ValueSelectScreen extends Component<*, State> {
 
   render() {
     return (
-      <View>
+      <Screen>
         <Text>How much do you want to donate?</Text>
         <View style={styles.costContainer}>
           { this.state.cost !== 1 
@@ -41,7 +42,7 @@ export default class ValueSelectScreen extends Component<*, State> {
           <Cost value={this.state.cost} />
           <CrementButton type={CrementButton.TYPE.INCREMENT} onPress={this.incrementValue} />
         </View>
-      </View>
+      </Screen>
     );
   }
 }
