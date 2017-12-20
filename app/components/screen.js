@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 25,
     paddingRight: 25,
-    justifyContent: 'center'
+    // justifyContent: 'center'
   }
 });

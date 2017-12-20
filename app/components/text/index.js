@@ -2,28 +2,31 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import {
-  Text,
+  Text as NativeText,
   StyleSheet
 } from 'react-native';
+import Header from './header';
 
 type Props = {
   children?: Node,
-  style: {} | []
+  style?: {} | []
 };
 
-export default class HeaderText extends Component<Props> {
+export default class Text extends Component<Props> {
+  static Header = Header;
+
   render() {
     const { style, children } = this.props;
 
     return (
-      <Text style={[styles.textDefault, style]}>{children}</Text>
+      <NativeText style={[styles.textDefault, style]}>{children}</NativeText>
     );
   }
 }
 
 const styles = StyleSheet.create({
   textDefault: {
-    fontSize: 90,
+    fontSize: 40,
     fontWeight: '400',
     textAlign: 'center',
     margin: 10,
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     opacity: 0.8,
     textShadowOffset: {width: 0, height: 1},
-    textShadowColor: 'rgba(0,0,0,0.30)',
-    textShadowRadius: 30
+    textShadowColor: 'rgba(0,0,0,0.20)',
+    textShadowRadius: 20
   }
 });
